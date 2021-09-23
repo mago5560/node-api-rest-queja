@@ -1,6 +1,7 @@
 const dbConfig = require("../config/db.config.js");
 
 const Sequelize = require("sequelize");
+///*
 //DB Heroku
 const sequelize = new Sequelize({
   database: "d9j5v3466ida1j",
@@ -16,6 +17,7 @@ const sequelize = new Sequelize({
     }
   }
 });
+//*/
 /*
 //Local
 const sequelize = new Sequelize(dbConfig.DB, dbConfig.USER, dbConfig.PASSWORD, {
@@ -31,6 +33,7 @@ const sequelize = new Sequelize(dbConfig.DB, dbConfig.USER, dbConfig.PASSWORD, {
   }
 });
 */
+
 const db = {};
 
 db.Sequelize = Sequelize;
