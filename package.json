@@ -2,9 +2,9 @@
   "name": "api_queja",
   "version": "1.0.0",
   "description": "",
-  "main": "index.js",
-  "scripts": {
-    "dev": "nodemon index.js"
+  "main": "server.js",
+  "scripts": {    
+    "start": "node server.js"
   },
   "repository": {
     "type": "git",
