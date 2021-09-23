@@ -1,11 +1,24 @@
 const dbConfig = require("../config/db.config.js");
 
 const Sequelize = require("sequelize");
+const sequelize = new Sequelize(`${process.env.DATABASE_URI}?sslmode=require`, {
+  url: process.env.DATABASE_URI,
+  dialect: 'postgres',
+  logging: false,
+  dialectOptions: {
+    ssl: {
+      rejectUnauthorized: false, // very important
+    }
+  }
+});
+
+/*
+//Local
 const sequelize = new Sequelize(dbConfig.DB, dbConfig.USER, dbConfig.PASSWORD, {
   host: dbConfig.HOST,
   port: dbConfig.PORT,
   dialect: dbConfig.dialect,
-
+  
   pool: {
     max: dbConfig.pool.max,
     min: dbConfig.pool.min,
@@ -13,7 +26,7 @@ const sequelize = new Sequelize(dbConfig.DB, dbConfig.USER, dbConfig.PASSWORD, {
     idle: dbConfig.pool.idle
   }
 });
-
+*/
 const db = {};
 
 db.Sequelize = Sequelize;
