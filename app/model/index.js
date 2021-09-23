@@ -1,17 +1,21 @@
 const dbConfig = require("../config/db.config.js");
 
 const Sequelize = require("sequelize");
-const sequelize = new Sequelize(`${process.env.DATABASE_URL}?sslmode=require`, {
-  url: process.env.DATABASE_URL,
-  dialect: 'postgres',
-  logging: false,
+//DB Heroku
+const sequelize = new Sequelize({
+  database: "d9j5v3466ida1j",
+  username: "utpedahkltjljj",
+  password: "6d47756a1bbf15d8b61d91783ee73982504555302fe4f0df46f0aa9cd3396c63",
+  host: "ec2-18-209-143-227.compute-1.amazonaws.com",
+  port: 5432,
+  dialect: "postgres",
   dialectOptions: {
     ssl: {
-      rejectUnauthorized: false, // very important
+      require: true, // This will help you. But you will see nwe error
+      rejectUnauthorized: false // This line will fix new error
     }
   }
 });
-
 /*
 //Local
 const sequelize = new Sequelize(dbConfig.DB, dbConfig.USER, dbConfig.PASSWORD, {
