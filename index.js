@@ -1,6 +1,6 @@
 const express = require('express');
-const morgan = require('morgan');
-//const bodyParser = require('body-parser');
+//const morgan = require('morgan');
+const bodyParser = require('body-parser');
 const cors= require("cors");
 const app = express();
 
@@ -17,9 +17,12 @@ app.set('port', process.env.PORT || 3000);
 
 // middlewares
 app.use(cors(corsOptions));
-app.use(morgan('dev'));
-app.use(express.urlencoded({extended: false}));
-app.use(express.json());
+//app.use(morgan('dev'));
+//app.use(express.urlencoded({extended: false}));
+//app.use(express.json());
+
+app.use (bodyParser.json());
+app.use(bodyParser.urlencoded({extended:true}));
 
 //int DB
 //const db= require('./app/model/index.js');
@@ -28,7 +31,7 @@ app.use(express.json());
 //db.sequelize.sync({force:true});
 
 // routes
-app.use(require('./app/routes/index.js'));
+//app.use(require('./app/routes/index.js'));
 
 
 app.get("/", (req,res) => {
