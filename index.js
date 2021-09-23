@@ -30,6 +30,14 @@ app.use(express.json());
 // routes
 app.use(require('./app/routes/index.js'));
 
+
+app.get("/", (req,res) => {
+    res.json({"nombre":"Luis Angel Mendoza Gonzalez",
+            "carnet":"0908-08-13094"
+            });
+});
+
+
 // starting the server
 app.listen(app.get('port'), () => {
     console.log(`Server on port ${app.get('port')}`);
